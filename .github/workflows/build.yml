@@ -21,13 +21,10 @@ jobs:
         toolchain: stable
     - name: Install dependencies
       run: sudo apt-get install nettle-dev libssl-dev capnproto make clang pkg-config libsqlite3-dev llvm libclang-dev
-    - uses: actions-rs/cargo@v1
-      with:
-        command: build
-        args: --all-features --release --verbose
-    - run: ls ./target
+    - run: cargo build --all-features --release --verbose
+    - run: ls ./target/release
     - uses: actions/upload-artifact@v4
       with:
         name: vanity_gpg
-        path: vanity_gpg
+        path: ./target/release/vanity_gpg
         retention-days: 10
