@@ -25,7 +25,7 @@ jobs:
       with:
         command: build
         args: --all-features --release --verbose
-    - run: ls
+    - run: ls ./target
     - uses: actions/upload-artifact@v4
       with:
         name: vanity_gpg
